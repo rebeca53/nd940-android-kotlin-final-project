@@ -1,0 +1,31 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/scheduling_header">
+
+        <ListPreference
+            app:defaultValue="every_day"
+            app:entries="@array/frequency_entries"
+            app:entryValues="@array/frequency_values"
+            app:key="frequency"
+            app:title="@string/frequency_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="time"
+            app:title="@string/time_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/notifications_header">
+
+        <SwitchPreferenceCompat
+            app:dependency="sync"
+            app:key="attachment"
+            app:summaryOff="@string/notifications_summary_off"
+            app:summaryOn="@string/notifications_summary_on"
+            app:title="@string/notifications_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

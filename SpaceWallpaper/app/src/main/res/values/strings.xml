@@ -2,4 +2,19 @@
     <string name="app_name">Space Wallpaper</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Preference Titles -->
+    <string name="scheduling_header">Scheduling</string>
+    <string name="notifications_header">Notifications</string>
+
+    <!-- Scheduling Preferences -->
+    <string name="frequency_title">Frequency</string>
+    <string name="time_title">Time</string>
+
+    <!-- Notifications Preferences -->
+    <string name="notifications_title">Notify before apply</string>
+    <string name="notifications_summary_on">At the scheduled time to change wallpaper, you are notified.
+        You can decline or accept the change.
+    </string>
+    <string name="notifications_summary_off">Automatically set the new wallpaper at the scheduled time.
+    </string>
 </resources>
