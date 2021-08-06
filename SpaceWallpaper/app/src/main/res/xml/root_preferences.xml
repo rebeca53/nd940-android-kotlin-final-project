@@ -20,8 +20,7 @@
     <PreferenceCategory app:title="@string/notifications_header">
 
         <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
+            app:key="notify"
             app:summaryOff="@string/notifications_summary_off"
             app:summaryOn="@string/notifications_summary_on"
             app:title="@string/notifications_title" />

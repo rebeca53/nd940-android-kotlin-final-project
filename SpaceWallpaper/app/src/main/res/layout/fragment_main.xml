@@ -67,38 +67,46 @@
             app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <ToggleButton
+        <Switch
             android:id="@+id/toggleButton"
             android:layout_width="0dp"
             android:layout_height="126dp"
-            android:text="ToggleButton"
+            android:layout_marginEnd="16dp"
+            android:text="On/Off"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/settingsButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         <Button
             android:id="@+id/settingsButton"
-            android:layout_width="204dp"
+            android:layout_width="0dp"
             android:layout_height="126dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_corners"
             android:text="Settings"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/favorites_button"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
 
         <Button
-            android:id="@+id/savedButton"
-            android:layout_width="204dp"
+            android:id="@+id/favorites_button"
+            android:layout_width="0dp"
             android:layout_height="127dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_corners"
             android:text="Favorites"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/settingsButton"
             app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
