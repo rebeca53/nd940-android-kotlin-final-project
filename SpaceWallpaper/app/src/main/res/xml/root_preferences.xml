@@ -17,8 +17,10 @@
 
     </PreferenceCategory>
 
+    <!--todo add on off toggle -->
     <PreferenceCategory app:title="@string/notifications_header">
 
+<!--        todo change to time preference https://medium.com/nerd-for-tech/time-picker-and-custom-entries-in-preference-fragment-made-simple-1e0e125ff2ac-->
         <SwitchPreferenceCompat
             app:key="notify"
             app:summaryOff="@string/notifications_summary_off"

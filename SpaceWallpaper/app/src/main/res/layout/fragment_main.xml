@@ -17,7 +17,7 @@
         <FrameLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -28,7 +28,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/space" />
+                app:srcCompat="@drawable/luna" />
             <!--            pictureOfDay="@{viewModel.imageOfDay.url}"-->
             <!--            pictureOfDayContentDescription="@{viewModel.imageOfDay.title}"-->
             <!--            -->
@@ -40,6 +40,7 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop" />
+
             <!--            imageOfDayNASAApiStatus="@{viewModel.statusImageOfDay}"-->
             <!--            android:contentDescription="@string/this_is_nasa_s_picture_of_day_showing_nothing_yet"-->
 
@@ -47,67 +48,49 @@
 
         <ImageButton
             android:id="@+id/downloadButton"
-            android:layout_width="204dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:background="#55555555"
-            android:src="@android:drawable/stat_sys_download_done"
-            app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
-            app:layout_constraintEnd_toStartOf="@+id/saveButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/saveButton" />
+            android:src="@drawable/ic_baseline_cloud_download_48"
+            app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/saveButton" />
 
         <ImageButton
             android:id="@+id/saveButton"
-            android:layout_width="204dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_marginEnd="8dp"
             android:background="#55555555"
-            android:src="@drawable/ic_baseline_favorite_24"
-            app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <Switch
-            android:id="@+id/toggleButton"
-            android:layout_width="0dp"
-            android:layout_height="126dp"
-            android:layout_marginEnd="16dp"
-            android:text="On/Off"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/settingsButton"
+            android:src="@drawable/ic_baseline_favorite_48"
+            app:layout_constraintBottom_toTopOf="@+id/downloadButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
-        <Button
+        <ImageButton
             android:id="@+id/settingsButton"
-            android:layout_width="0dp"
-            android:layout_height="126dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/rounded_corners"
-            android:text="Settings"
-            android:textSize="18sp"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_700"
+            android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/favorites_button"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
+            app:srcCompat="@drawable/ic_baseline_settings_48" />
 
-        <Button
+        <ImageButton
             android:id="@+id/favorites_button"
-            android:layout_width="0dp"
-            android:layout_height="127dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/rounded_corners"
-            android:text="Favorites"
-            android:textSize="18sp"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_700"
+            android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/settingsButton"
-            app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
+            app:srcCompat="@drawable/ic_baseline_view_list_48" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
