@@ -1,6 +1,6 @@
 package com.rebeca.spacewallpaper.data
 
-import com.rebeca.spacewallpaper.data.local.FavoriteDTO
+import com.rebeca.spacewallpaper.data.local.favorites.FavoriteDTO
 import com.rebeca.spacewallpaper.data.local.Result
 
 /**

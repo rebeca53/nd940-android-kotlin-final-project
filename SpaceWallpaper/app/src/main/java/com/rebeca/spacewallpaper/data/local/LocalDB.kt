@@ -11,11 +11,11 @@ object LocalDB {
     /**
      * static method that creates a favorite class and returns the DAO of the favorite
      */
-    fun createFavoritesDao(context: Context): FavoritesDAO {
+    fun createFavoritesDao(context: Context): SpaceImageDAO {
         return Room.databaseBuilder(
             context.applicationContext,
-            FavoritesDatabase::class.java, "favoriteSpaceImages.db"
-        ).build().favoriteDao()
+            SpaceImageDatabase::class.java, "favoriteSpaceImages.db"
+        ).build().spaceImageDAO()
     }
 
 }

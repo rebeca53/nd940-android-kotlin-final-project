@@ -1,6 +1,8 @@
-package com.rebeca.spacewallpaper.data.local
+package com.rebeca.spacewallpaper.data.local.favorites
 
 import com.rebeca.spacewallpaper.data.FavoritesRepository
+import com.rebeca.spacewallpaper.data.local.SpaceImageDAO
+import com.rebeca.spacewallpaper.data.local.Result
 import com.rebeca.spacewallpaper.wrapEspressoIdlingResource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -9,11 +11,11 @@ import kotlinx.coroutines.withContext
 /**
  * Concrete implementation of a data source as a db.
  *
- * @param favoritesDAO the dao that does the Room db operations
+ * @param spaceImageDAO the dao that does the Room db operations
  * @param ioDispatcher a coroutine dispatcher to offload the blocking IO tasks
  */
 class FavoritesLocalRepository(
-    private val favoritesDAO: FavoritesDAO,
+    private val spaceImageDAO: SpaceImageDAO,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : FavoritesRepository {
 
@@ -24,7 +26,7 @@ class FavoritesLocalRepository(
     override suspend fun getFavorites(): Result<List<FavoriteDTO>> = withContext(ioDispatcher) {
         wrapEspressoIdlingResource {
             return@withContext try {
-                Result.Success(favoritesDAO.getFavorites())
+                Result.Success(spaceImageDAO.getFavorites())
             } catch (ex: Exception) {
                 Result.Error(ex.localizedMessage)
             }
@@ -37,7 +39,7 @@ class FavoritesLocalRepository(
      */
     override suspend fun saveFavorite(favorite: FavoriteDTO) = withContext(ioDispatcher){
         wrapEspressoIdlingResource {
-            favoritesDAO.saveFavorite(favorite)
+            spaceImageDAO.saveFavorite(favorite)
         }
     }
 
@@ -47,7 +49,7 @@ class FavoritesLocalRepository(
      */
     override suspend fun updateFavorite(favorite: FavoriteDTO) = withContext(ioDispatcher){
         wrapEspressoIdlingResource {
-            favoritesDAO.updateFavorite(favorite)
+            spaceImageDAO.updateFavorite(favorite)
         }
     }
 
@@ -60,7 +62,7 @@ class FavoritesLocalRepository(
     override suspend fun getFavorite(id: String): Result<FavoriteDTO> = withContext(ioDispatcher) {
         wrapEspressoIdlingResource {
             try {
-                val reminder = favoritesDAO.getFavoriteById(id)
+                val reminder = spaceImageDAO.getFavoriteById(id)
                 if (reminder != null) {
                     return@withContext Result.Success(reminder)
                 } else {
@@ -78,7 +80,7 @@ class FavoritesLocalRepository(
     override suspend fun deleteAllFavorites() {
         wrapEspressoIdlingResource {
             withContext(ioDispatcher) {
-                favoritesDAO.deleteAllFavorites()
+                spaceImageDAO.deleteAllFavorites()
             }
         }
     }

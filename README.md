@@ -35,6 +35,7 @@ Create layouts. Implement navigation.
 Delivered in August 7. TAG: v0.1.0
 ### 2. Repository - Retrieve and store data from NASA Api
 Get image of the day and additional data using API. Create database able to store image of the day. Create database able to store saved images. Test repository.
+Delivered in August 8. TAG: v0.2.0
 ### 3. Implement Service to retrieve image in background
 Implement background service. Be able to receive changes in its settings. Store received data in database. Test service, mock Repository.
 ### 4. Main Screen
@@ -48,4 +49,4 @@ Implement RecyclerView. Connect RecyclerView to Database. Get data from database
 ### 8. Animation
 Animate favorite and download option in Main screen. Animate image on transition from Saved screen to Detail screen. 
 ### 9. Optional
-Plus: Notify when download is done. Animate Favorite button in MainScreen in sync with the list icon. Test activity. When item is clicked in the list, open a drawer with explanation.
+Plus: Notify when download is done. Add Info button in Main Screen. Animate Favorite button in MainScreen in sync with the list icon. Test activity. When item is clicked in the list, open a drawer with explanation.

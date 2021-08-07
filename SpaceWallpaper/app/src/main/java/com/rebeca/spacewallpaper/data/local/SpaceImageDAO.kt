@@ -1,12 +1,40 @@
 package com.rebeca.spacewallpaper.data.local
 
 import androidx.room.*
+import com.rebeca.spacewallpaper.data.local.favorites.FavoriteDTO
+import com.rebeca.spacewallpaper.data.local.pictureofday.PictureOfDayDTO
 
 /**
- * Data Access Object for the favortes table.
+ * Data Access Object for the space image database
  */
 @Dao
-interface FavoritesDAO {
+interface SpaceImageDAO {
+    /**
+     * @return the only one picture of day.
+     */
+    @Query("SELECT * FROM pictureofday LIMIT 1")
+    suspend fun getPictureOfDay(): PictureOfDayDTO?
+
+    /**
+     * @param pictureOfDayDTO the picture of day to be inserted.
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun savePictureOfDay(pictureOfDayDTO: PictureOfDayDTO)
+
+    /**
+     * Update a today' space image in the database.
+     *
+     * @param pictureOfDayDTO the today' space image to be updated.
+     */
+    @Update
+    suspend fun updatePictureOfDay(pictureOfDayDTO: PictureOfDayDTO)
+
+    /**
+     * Delete picture of day.
+     */
+    @Query("DELETE FROM pictureofday")
+    suspend fun deletePictureOfDay()
+
     /**
      * @return all reminders.
      */

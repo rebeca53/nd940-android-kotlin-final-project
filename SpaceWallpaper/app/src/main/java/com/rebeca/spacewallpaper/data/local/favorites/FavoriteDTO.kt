@@ -1,4 +1,4 @@
-package com.rebeca.spacewallpaper.data.local
+package com.rebeca.spacewallpaper.data.local.favorites
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

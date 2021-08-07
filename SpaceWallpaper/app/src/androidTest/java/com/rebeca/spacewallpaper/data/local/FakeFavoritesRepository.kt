@@ -2,6 +2,7 @@ package com.rebeca.spacewallpaper.data.local
 
 import androidx.lifecycle.MutableLiveData
 import com.rebeca.spacewallpaper.data.FavoritesRepository
+import com.rebeca.spacewallpaper.data.local.favorites.FavoriteDTO
 
 class FakeFavoritesRepository: FavoritesRepository {
     private var shouldReturnError = false

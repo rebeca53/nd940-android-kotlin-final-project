@@ -4,6 +4,8 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
+import com.rebeca.spacewallpaper.data.local.favorites.FavoriteDTO
+import com.rebeca.spacewallpaper.data.local.favorites.FavoritesLocalRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -22,20 +24,20 @@ import org.koin.core.context.stopKoin
 @MediumTest
 class FavoritesLocalRepositoryTest {
     private lateinit var favoriteLocalRepository: FavoritesLocalRepository
-    private lateinit var database: FavoritesDatabase
+    private lateinit var database: SpaceImageDatabase
 
     @Before
     fun setup() {
         // using an in-memory database for testing, since it doesn't survive killing the process    }
         database = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
-            FavoritesDatabase::class.java
+            SpaceImageDatabase::class.java
         )
             .allowMainThreadQueries()
             .build()
 
         favoriteLocalRepository =
-            FavoritesLocalRepository(database.favoriteDao(), Dispatchers.Main)
+            FavoritesLocalRepository(database.spaceImageDAO(), Dispatchers.Main)
     }
 
     @After
@@ -53,7 +55,7 @@ class FavoritesLocalRepositoryTest {
             "Url1",
             "HDUrl1",
             "Explanation")
-        database.favoriteDao().saveFavorite(favorite)
+        database.spaceImageDAO().saveFavorite(favorite)
         favoriteLocalRepository.saveFavorite(favorite)
 
         // WHEN  - Favorite retrieved by ID
@@ -79,12 +81,12 @@ class FavoritesLocalRepositoryTest {
             "Url1",
             "HDUrl1",
             "Explanation")
-        database.favoriteDao().saveFavorite(favorite)
+        database.spaceImageDAO().saveFavorite(favorite)
         favoriteLocalRepository.saveFavorite(favorite)
 
         // WHEN  - Favorite retrieved by ID
         favorite.filepath = "path"
-        database.favoriteDao().updateFavorite(favorite)
+        database.spaceImageDAO().updateFavorite(favorite)
         favoriteLocalRepository.updateFavorite(favorite)
         val result = favoriteLocalRepository.getFavorite(favorite.id)
 
