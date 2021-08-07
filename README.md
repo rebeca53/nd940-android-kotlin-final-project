@@ -32,7 +32,7 @@ The SpaceWallpaper app will change your wallpaper to a space image directly from
 ## Timeline
 ### 1. Design all screens
 Create layouts. Implement navigation. 
-Delivered in August 7. TAG:
+Delivered in August 7. TAG: v0.1.0
 ### 2. Repository - Retrieve and store data from NASA Api
 Get image of the day and additional data using API. Create database able to store image of the day. Create database able to store saved images. Test repository.
 ### 3. Implement Service to retrieve image in background
