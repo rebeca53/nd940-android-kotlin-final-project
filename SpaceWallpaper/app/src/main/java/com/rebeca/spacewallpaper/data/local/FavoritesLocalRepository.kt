@@ -64,7 +64,7 @@ class FavoritesLocalRepository(
                 if (reminder != null) {
                     return@withContext Result.Success(reminder)
                 } else {
-                    return@withContext Result.Error("Reminder not found!")
+                    return@withContext Result.Error("Favorite space image not found!")
                 }
             } catch (e: Exception) {
                 return@withContext Result.Error(e.localizedMessage)
