@@ -1,33 +1,45 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <SwitchPreferenceCompat
+        app:key="enable"
+        app:title="@string/enable_title" />
+
     <PreferenceCategory app:title="@string/scheduling_header">
 
         <ListPreference
+            app:key="frequency"
             app:defaultValue="every_day"
             app:entries="@array/frequency_entries"
             app:entryValues="@array/frequency_values"
-            app:key="frequency"
             app:title="@string/frequency_title"
+            app:dependency="enable"
             app:useSimpleSummaryProvider="true" />
 
-        <EditTextPreference
+        <Preference
             app:key="time"
             app:title="@string/time_title"
+            app:dependency="enable"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 
-    <!--todo add on off toggle -->
     <PreferenceCategory app:title="@string/notifications_header">
 
-<!--        todo change to time preference https://medium.com/nerd-for-tech/time-picker-and-custom-entries-in-preference-fragment-made-simple-1e0e125ff2ac-->
         <SwitchPreferenceCompat
             app:key="notify"
             app:summaryOff="@string/notifications_summary_off"
             app:summaryOn="@string/notifications_summary_on"
-            app:title="@string/notifications_title" />
+            app:title="@string/notifications_title"
+            app:dependency="enable" />
 
     </PreferenceCategory>
 
-    <!-- todo add About of app, version etc -->
+    <PreferenceCategory app:title="@string/about_header">
+
+        <Preference
+            app:key="version"
+            app:title="@string/version_title"
+            app:summary="@string/version_summary"/>
+
+    </PreferenceCategory>
 </PreferenceScreen>

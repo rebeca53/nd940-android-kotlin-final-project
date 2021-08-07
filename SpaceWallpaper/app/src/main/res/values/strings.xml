@@ -5,8 +5,10 @@
     <!-- Preference Titles -->
     <string name="scheduling_header">Scheduling</string>
     <string name="notifications_header">Notifications</string>
+    <string name="about_header">About</string>
 
     <!-- Scheduling Preferences -->
+    <string name="enable_title">Enable to change wallpaper</string>
     <string name="frequency_title">Frequency</string>
     <string name="time_title">Time</string>
 
@@ -16,4 +18,8 @@
     </string>
     <string name="notifications_summary_off">Automatically set the new wallpaper at the scheduled time.
     </string>
+
+    <!-- About Preferences -->
+    <string name="version_title">Build version</string>
+    <string name="version_summary">1.0-alpha</string>
 </resources>
