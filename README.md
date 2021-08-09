@@ -35,7 +35,7 @@ Create layouts. Implement navigation.
 Delivered in August 7. TAG: v0.1.0
 ### 2. Repository - Retrieve and store data from NASA Api
 Get image of the day and additional data using API. Create database able to store image of the day. Create database able to store saved images. Test repository.
-Delivered in August 8. TAG: v0.2.0
+Delivered in August 9. TAG: v0.2.0
 ### 3. Implement Service to retrieve image in background
 Implement background service. Be able to receive changes in its settings. Store received data in database. Test service, mock Repository.
 ### 4. Main Screen
