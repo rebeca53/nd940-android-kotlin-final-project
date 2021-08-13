@@ -65,7 +65,7 @@ class PictureOfDayLocalRepositoryTest {
 
         // then
         val result = pictureOfDayLocalRepository.getPictureOfDay()
-        result as Result.Success
+        result as RequestResult.Success
         assertThat(result.data.id, not(picture.id))
     }
 
@@ -86,7 +86,7 @@ class PictureOfDayLocalRepositoryTest {
         val result = pictureOfDayLocalRepository.getPictureOfDay()
 
         // then
-        result as Result.Success
+        result as RequestResult.Success
         assertThat(result.data.id, CoreMatchers.`is`(picture.id))
         MatcherAssert.assertThat(result.data.mediaType, CoreMatchers.`is`(picture.mediaType))
         MatcherAssert.assertThat(result.data.title, CoreMatchers.`is`(picture.title))
@@ -116,7 +116,7 @@ class PictureOfDayLocalRepositoryTest {
         val result = pictureOfDayLocalRepository.getPictureOfDay()
 
         // then
-        result as Result.Success
+        result as RequestResult.Success
         assertThat(result.data.id, CoreMatchers.`is`(picture.id))
         MatcherAssert.assertThat(result.data.mediaType, CoreMatchers.`is`(picture.mediaType))
         MatcherAssert.assertThat(result.data.title, CoreMatchers.`is`(picture.title))
@@ -132,7 +132,7 @@ class PictureOfDayLocalRepositoryTest {
         val result = pictureOfDayLocalRepository.getPictureOfDay()
 
         // then
-        result as Result.Error
+        result as RequestResult.Error
         assertThat(
             result.message,
             CoreMatchers.`is`("Picture Of Day not found!")
@@ -173,7 +173,7 @@ class PictureOfDayLocalRepositoryTest {
         val result = pictureOfDayLocalRepository.getPictureOfDay()
 
         // then
-        result as Result.Success
+        result as RequestResult.Success
         assertThat(result.data.id, CoreMatchers.`is`(picture3.id))
         MatcherAssert.assertThat(result.data.mediaType, CoreMatchers.`is`(picture3.mediaType))
         MatcherAssert.assertThat(result.data.title, CoreMatchers.`is`(picture3.title))
@@ -218,7 +218,7 @@ class PictureOfDayLocalRepositoryTest {
 
         // then
         val result = pictureOfDayLocalRepository.getPictureOfDay()
-        result as Result.Error
+        result as RequestResult.Error
         assertThat(
             result.message,
             CoreMatchers.`is`("Picture Of Day not found!")

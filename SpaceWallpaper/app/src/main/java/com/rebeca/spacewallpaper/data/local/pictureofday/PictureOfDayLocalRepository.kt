@@ -1,7 +1,7 @@
 package com.rebeca.spacewallpaper.data.local.pictureofday
 
 import com.rebeca.spacewallpaper.data.PictureOfDayRepository
-import com.rebeca.spacewallpaper.data.local.Result
+import com.rebeca.spacewallpaper.data.local.RequestResult
 import com.rebeca.spacewallpaper.data.local.SpaceImageDAO
 import com.rebeca.spacewallpaper.data.remote.NASAApi
 import com.rebeca.spacewallpaper.wrapEspressoIdlingResource
@@ -34,17 +34,17 @@ class PictureOfDayLocalRepository(
     /**
      * Refresh info from NASAApiService. Then retrieve data from the local db.
      */
-    override suspend fun getPictureOfDay(): Result<PictureOfDayDTO> = withContext(ioDispatcher) {
+    override suspend fun getPictureOfDay(): RequestResult<PictureOfDayDTO> = withContext(ioDispatcher) {
         wrapEspressoIdlingResource {
             return@withContext try {
                 val picture = spaceImageDAO.getPictureOfDay()
                 if (picture != null ) {
-                    Result.Success(picture)
+                    RequestResult.Success(picture)
                 } else {
-                    Result.Error("Picture Of Day not found!")
+                    RequestResult.Error("Picture Of Day not found!")
                 }
             } catch (ex: Exception) {
-                Result.Error(ex.localizedMessage)
+                RequestResult.Error(ex.localizedMessage)
             }
         }
     }

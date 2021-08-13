@@ -62,7 +62,7 @@ class FavoritesLocalRepositoryTest {
         val result = favoriteLocalRepository.getFavorite(favorite.id)
 
         // THEN - Same favorite is returned
-        result as Result.Success
+        result as RequestResult.Success
         assertThat(result.data.id, `is`(favorite.id))
         assertThat(result.data.mediaType,`is`(favorite.mediaType))
         assertThat(result.data.title, `is`(favorite.title))
@@ -91,7 +91,7 @@ class FavoritesLocalRepositoryTest {
         val result = favoriteLocalRepository.getFavorite(favorite.id)
 
         // THEN - Same favorite is returned
-        result as Result.Success
+        result as RequestResult.Success
         assertThat(result.data.id, `is`(favorite.id))
         assertThat(result.data.mediaType,`is`(favorite.mediaType))
         assertThat(result.data.title, `is`(favorite.title))
@@ -115,7 +115,7 @@ class FavoritesLocalRepositoryTest {
         val result = favoriteLocalRepository.getFavorite(favorite.id)
 
         // THEN - No favorite is returned
-        result as Result.Error
+        result as RequestResult.Error
         assertThat(result.message, `is`("Favorite space image not found!"))
     }
 
@@ -149,7 +149,7 @@ class FavoritesLocalRepositoryTest {
         val result = favoriteLocalRepository.getFavorites()
 
         // THEN - Same favorite is returned
-        result as Result.Success
+        result as RequestResult.Success
         for (index in 0..result.data.lastIndex) {
             val loaded = result.data[index]
             val favorite = listFavorites[index]
@@ -197,7 +197,7 @@ class FavoritesLocalRepositoryTest {
 
         // THEN - No favorite is returned
         val result = favoriteLocalRepository.getFavorites()
-        result as Result.Success
+        result as RequestResult.Success
         assertThat(result.data.isEmpty(), `is`(true))
     }
 }

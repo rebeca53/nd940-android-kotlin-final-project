@@ -73,6 +73,9 @@ dependencies {
     //Koin
     implementation "org.koin:koin-android:2.0.1"
     implementation "org.koin:koin-androidx-viewmodel:2.0.1"
+    //Background worker
+    implementation 'androidx.work:work-runtime-ktx:2.5.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

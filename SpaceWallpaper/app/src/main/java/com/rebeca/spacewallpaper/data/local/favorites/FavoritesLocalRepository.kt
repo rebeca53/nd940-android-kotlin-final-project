@@ -2,7 +2,7 @@ package com.rebeca.spacewallpaper.data.local.favorites
 
 import com.rebeca.spacewallpaper.data.FavoritesRepository
 import com.rebeca.spacewallpaper.data.local.SpaceImageDAO
-import com.rebeca.spacewallpaper.data.local.Result
+import com.rebeca.spacewallpaper.data.local.RequestResult
 import com.rebeca.spacewallpaper.wrapEspressoIdlingResource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -23,12 +23,12 @@ class FavoritesLocalRepository(
      * Get the favorites list from the local db
      * @return Result the holds a Success with all the favorites or an Error object with the error message
      */
-    override suspend fun getFavorites(): Result<List<FavoriteDTO>> = withContext(ioDispatcher) {
+    override suspend fun getFavorites(): RequestResult<List<FavoriteDTO>> = withContext(ioDispatcher) {
         wrapEspressoIdlingResource {
             return@withContext try {
-                Result.Success(spaceImageDAO.getFavorites())
+                RequestResult.Success(spaceImageDAO.getFavorites())
             } catch (ex: Exception) {
-                Result.Error(ex.localizedMessage)
+                RequestResult.Error(ex.localizedMessage)
             }
         }
     }
@@ -59,17 +59,17 @@ class FavoritesLocalRepository(
      * @return Result the holds a Success object with the Favorite space image
      *         or an Error object with the error message
      */
-    override suspend fun getFavorite(id: String): Result<FavoriteDTO> = withContext(ioDispatcher) {
+    override suspend fun getFavorite(id: String): RequestResult<FavoriteDTO> = withContext(ioDispatcher) {
         wrapEspressoIdlingResource {
             try {
                 val reminder = spaceImageDAO.getFavoriteById(id)
                 if (reminder != null) {
-                    return@withContext Result.Success(reminder)
+                    return@withContext RequestResult.Success(reminder)
                 } else {
-                    return@withContext Result.Error("Favorite space image not found!")
+                    return@withContext RequestResult.Error("Favorite space image not found!")
                 }
             } catch (e: Exception) {
-                return@withContext Result.Error(e.localizedMessage)
+                return@withContext RequestResult.Error(e.localizedMessage)
             }
         }
     }

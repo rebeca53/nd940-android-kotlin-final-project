@@ -7,17 +7,17 @@ import com.rebeca.spacewallpaper.data.local.favorites.FavoriteDTO
 class FakeFavoritesRepository: FavoritesRepository {
     private var shouldReturnError = false
     var favoriteData: LinkedHashMap<String, FavoriteDTO> = LinkedHashMap()
-    private val observableFavorite = MutableLiveData<Result<List<FavoriteDTO>>>()
+    private val observableFavorite = MutableLiveData<RequestResult<List<FavoriteDTO>>>()
 
     fun setReturnError(value: Boolean) {
         shouldReturnError = value
     }
 
-    override suspend fun getFavorites(): Result<List<FavoriteDTO>> {
+    override suspend fun getFavorites(): RequestResult<List<FavoriteDTO>> {
         if (shouldReturnError) {
-            return Result.Error("Test Exception")
+            return RequestResult.Error("Test Exception")
         }
-        return Result.Success(favoriteData.values.toList())
+        return RequestResult.Success(favoriteData.values.toList())
     }
 
     override suspend fun saveFavorite(favorite: FavoriteDTO) {
@@ -28,14 +28,14 @@ class FakeFavoritesRepository: FavoritesRepository {
         favoriteData[favorite.id] = favorite
     }
 
-    override suspend fun getFavorite(id: String): Result<FavoriteDTO> {
+    override suspend fun getFavorite(id: String): RequestResult<FavoriteDTO> {
         if (shouldReturnError) {
-            return Result.Error("Test Exception")
+            return RequestResult.Error("Test Exception")
         }
         favoriteData[id]?.let {
-            return Result.Success(it)
+            return RequestResult.Success(it)
         }
-        return Result.Error("Could not find favorite")
+        return RequestResult.Error("Could not find favorite")
     }
 
     override suspend fun deleteAllFavorites() {

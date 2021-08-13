@@ -1,6 +1,6 @@
 package com.rebeca.spacewallpaper.data
 
-import com.rebeca.spacewallpaper.data.local.Result
+import com.rebeca.spacewallpaper.data.local.RequestResult
 import com.rebeca.spacewallpaper.data.local.pictureofday.PictureOfDayDTO
 
 /**
@@ -8,7 +8,7 @@ import com.rebeca.spacewallpaper.data.local.pictureofday.PictureOfDayDTO
  */
 interface PictureOfDayRepository {
     suspend fun refreshPictureOfDay()
-    suspend fun getPictureOfDay(): Result<PictureOfDayDTO>
+    suspend fun getPictureOfDay(): RequestResult<PictureOfDayDTO>
     suspend fun updatePictureOfDay(pictureOfDayDTO: PictureOfDayDTO)
     suspend fun savePictureOfDay(pictureOfDayDTO: PictureOfDayDTO)
     suspend fun deleteAll()
