@@ -85,7 +85,7 @@ dependencies {
     // Instrumented test
     androidTestImplementation "androidx.test:rules:1.4.0" //instant test executor rule
     androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7" // runblockingtest
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2" // runblockingtest
 
 
 

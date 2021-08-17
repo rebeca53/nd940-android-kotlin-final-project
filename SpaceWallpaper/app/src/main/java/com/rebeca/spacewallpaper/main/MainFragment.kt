@@ -12,6 +12,7 @@ import androidx.work.*
 import com.rebeca.spacewallpaper.databinding.FragmentMainBinding
 import com.rebeca.spacewallpaper.R
 import com.rebeca.spacewallpaper.work.UpdateWallpaperWorker
+import com.rebeca.spacewallpaper.work.UpdateWallpaperWorkerFactory
 import java.util.concurrent.TimeUnit
 
 class MainFragment : Fragment() {
@@ -21,21 +22,10 @@ class MainFragment : Fragment() {
     }
     private lateinit var binding: FragmentMainBinding
 
-    private lateinit var workManager: WorkManager
-    private val constraints = Constraints.Builder()
-        .setRequiredNetworkType(NetworkType.CONNECTED)
-        .setRequiresStorageNotLow(true)
-        .setRequiresBatteryNotLow(true)
-        .build()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val applicationContext = activity?.applicationContext as Context
-        workManager = WorkManager.getInstance(applicationContext)
-
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_main,
@@ -55,21 +45,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecurringWork()
-    }
 
-    private fun setupRecurringWork() {
-        val wallpaperWorker = PeriodicWorkRequestBuilder<UpdateWallpaperWorker>(
-            1,
-            TimeUnit.DAYS)
-//            .setInitialDelay() //todo set specific time
-            .setConstraints(constraints)
-            .addTag(UpdateWallpaperWorker.WORK_TAG)
-            .build()
-
-       workManager.enqueueUniquePeriodicWork(
-            UpdateWallpaperWorker.WORK_NAME,
-            ExistingPeriodicWorkPolicy.REPLACE,
-           wallpaperWorker)
+        //todo use settings to launch service. properly get preferences.
+        val applicationContext = activity?.applicationContext as Context
+        val workManager = WorkManager.getInstance(applicationContext)
+        UpdateWallpaperWorkerFactory.setupWork(true, workManager = workManager)
     }
 }

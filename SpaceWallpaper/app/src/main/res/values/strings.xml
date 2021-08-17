@@ -13,7 +13,7 @@
     <string name="time_title">Time</string>
 
     <!-- Notifications Preferences -->
-    <string name="notifications_title">Notify before apply</string>
+    <string name="notifications_title">Confirm before apply</string>
     <string name="notifications_summary_on">At the scheduled time to change wallpaper, you are notified.
     </string>
     <string name="notifications_summary_off">Automatically set the new wallpaper at the scheduled time.
@@ -22,4 +22,12 @@
     <!-- About Preferences -->
     <string name="version_title">Build version</string>
     <string name="version_summary">1.0-alpha</string>
+
+    <!-- Foreground notification -->
+    <string name="notification_channel_id">123456</string>
+    <string name="notification_title">Update wallpaper?</string>
+    <string name="notification_cancel">Cancel</string>
+    <string name="notification_confirm">Confirm</string>
+    <string name="notification_channel_name">SpaceWallpaper</string>
+    <string name="notification_channel_description">Update wallpaper to a space image</string>
 </resources>
