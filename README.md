@@ -36,8 +36,9 @@ Delivered in August 7. TAG: v0.1.0
 ### 2. Repository - Retrieve and store data from NASA Api
 Get image of the day and additional data using API. Create database able to store image of the day. Create database able to store saved images. Test repository.
 Delivered in August 9. TAG: v0.2.0
-### 3. Implement Service to retrieve image in background
-Implement background service. Be able to receive changes in its settings. Store received data in database. Test service, mock Repository.
+### 3. Implement Worker to retrieve image in background
+Implement background Worker. Be able to receive changes in its settings. Store received data in database. Change wallpaper. ~~Test service, mock Repository.~~ 
+Delivered in August 17. TAG: v0.3.0
 ### 4. Main Screen
 Implement viewModel to store image of the day. Update image of the day. Trigger service using On/Off button. Implement favorite and download options. Test view model and fragment.
 ### 5. Settings Screen
@@ -49,4 +50,4 @@ Implement RecyclerView. Connect RecyclerView to Database. Get data from database
 ### 8. Animation
 Animate favorite and download option in Main screen. Animate image on transition from Saved screen to Detail screen. 
 ### 9. Optional
-Plus: Notify when download is done. Add Info button in Main Screen. Animate Favorite button in MainScreen in sync with the list icon. Test activity. When item is clicked in the list, open a drawer with explanation.
+Plus: Notify when download is done. Add Info button in Main Screen. Animate Favorite button in MainScreen in sync with the list icon. Test activity. When item is clicked in the list, open a drawer with explanation. Test service, mock Repository.
