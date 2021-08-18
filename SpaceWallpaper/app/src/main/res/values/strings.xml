@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">Space Wallpaper</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Main Fragment -->
+    <string name="nasa_picture_of_day_content_description_format">NASA\'s picture of day: %s</string>
+    <string name="this_is_nasa_s_picture_of_day_showing_nothing_yet">This is NASA\'s picture of day, showing nothing yet</string>
+    <string name="download_button">Download Button</string>
+    <string name="favorite_button">Favorite Button</string>
+    <string name="settings_button">Settings Button</string>
+    <string name="favorites_list_button">Favorites List Button</string>
+
     <!-- Preference Titles -->
     <string name="scheduling_header">Scheduling</string>
     <string name="notifications_header">Notifications</string>
@@ -30,4 +36,5 @@
     <string name="notification_confirm">Confirm</string>
     <string name="notification_channel_name">SpaceWallpaper</string>
     <string name="notification_channel_description">Update wallpaper to a space image</string>
+
 </resources>

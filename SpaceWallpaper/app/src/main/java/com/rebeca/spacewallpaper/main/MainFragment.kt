@@ -1,36 +1,33 @@
 package com.rebeca.spacewallpaper.main
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.work.*
 import com.rebeca.spacewallpaper.databinding.FragmentMainBinding
-import com.rebeca.spacewallpaper.R
-import com.rebeca.spacewallpaper.work.UpdateWallpaperWorker
-import com.rebeca.spacewallpaper.work.UpdateWallpaperWorkerFactory
-import java.util.concurrent.TimeUnit
 
 class MainFragment : Fragment() {
-
     companion object {
         private const val TAG = "MainFragment"
     }
     private lateinit var binding: FragmentMainBinding
+    private val viewModel: MainViewModel by lazy {
+        val activity = requireNotNull(this.activity) {
+            "You can only access the viewModel after onViewCreated()"
+        }
+        ViewModelProvider(this, MainViewModel.Factory(activity.application)).get(MainViewModel::class.java)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.fragment_main,
-            container,
-            false)
+        binding = FragmentMainBinding.inflate(inflater)
+        binding.lifecycleOwner = this
 
         binding.settingsButton.setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToSettingsFragment())
@@ -39,6 +36,8 @@ class MainFragment : Fragment() {
         binding.favoritesButton.setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToFavoritesFragment())
         }
+
+        binding.viewModel = viewModel
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -47,8 +46,8 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //todo use settings to launch service. properly get preferences.
-        val applicationContext = activity?.applicationContext as Context
-        val workManager = WorkManager.getInstance(applicationContext)
-        UpdateWallpaperWorkerFactory.setupWork(true, workManager = workManager)
+//        val applicationContext = activity?.applicationContext as Context
+//        val workManager = WorkManager.getInstance(applicationContext)
+//        UpdateWallpaperWorkerFactory.setupWork(true, workManager, 1, 15, 30)
     }
 }

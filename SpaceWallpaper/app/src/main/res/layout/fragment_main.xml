@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="viewModel"-->
-<!--            type="com.rebeca.spacewallpaper.main.MainViewModel" />-->
-<!--    </data>-->
+    <data>
+        <variable
+            name="viewModel"
+            type="com.rebeca.spacewallpaper.main.MainViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,21 +28,18 @@
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/luna" />
-            <!--            pictureOfDay="@{viewModel.imageOfDay.url}"-->
-            <!--            pictureOfDayContentDescription="@{viewModel.imageOfDay.title}"-->
-            <!--            -->
-            <!--            />-->
+                tools:srcCompat="@drawable/luna"
+                pictureOfDay="@{viewModel.pictureOfDay.url}"
+                pictureOfDayContentDescription="@{viewModel.pictureOfDay.title}" />
 
             <ImageView
                 android:id="@+id/status_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop" />
-
-            <!--            imageOfDayNASAApiStatus="@{viewModel.statusImageOfDay}"-->
-            <!--            android:contentDescription="@string/this_is_nasa_s_picture_of_day_showing_nothing_yet"-->
+                android:scaleType="centerCrop"
+                imageOfDayNASAApiStatus="@{viewModel.statusPictureOfDay}"
+                android:contentDescription="@string/this_is_nasa_s_picture_of_day_showing_nothing_yet" />
 
         </FrameLayout>
 
@@ -53,11 +50,12 @@
             android:layout_gravity="bottom"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:background="#55555555"
+            android:background="#00555555"
             android:src="@drawable/ic_baseline_cloud_download_48"
             app:layout_constraintBottom_toTopOf="@+id/frameLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/saveButton" />
+            app:layout_constraintTop_toBottomOf="@+id/saveButton"
+            android:contentDescription="@string/download_button" />
 
         <ImageButton
             android:id="@+id/saveButton"
@@ -65,11 +63,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginEnd="8dp"
-            android:background="#55555555"
+            android:background="#00555555"
             android:src="@drawable/ic_baseline_favorite_48"
             app:layout_constraintBottom_toTopOf="@+id/downloadButton"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            android:contentDescription="@string/favorite_button" />
 
         <ImageButton
             android:id="@+id/settingsButton"
@@ -79,7 +78,8 @@
             android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_baseline_settings_48" />
+            app:srcCompat="@drawable/ic_baseline_settings_48"
+            android:contentDescription="@string/settings_button" />
 
         <ImageButton
             android:id="@+id/favorites_button"
@@ -89,8 +89,8 @@
             android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_baseline_view_list_48" />
-
+            app:srcCompat="@drawable/ic_baseline_view_list_48"
+            android:contentDescription="@string/favorites_list_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

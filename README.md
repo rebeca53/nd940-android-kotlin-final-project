@@ -37,12 +37,12 @@ Delivered in August 7. TAG: v0.1.0
 Get image of the day and additional data using API. Create database able to store image of the day. Create database able to store saved images. Test repository.
 Delivered in August 9. TAG: v0.2.0
 ### 3. Implement Worker to retrieve image in background
-Implement background Worker. Be able to receive changes in its settings. Store received data in database. Change wallpaper. ~~Test service, mock Repository.~~ 
+Implement background Worker. Be able to receive changes in its settings. Store received data in database. Change wallpaper. 
 Delivered in August 17. TAG: v0.3.0
 ### 4. Main Screen
-Implement viewModel to store image of the day. Update image of the day. Trigger service using On/Off button. Implement favorite and download options. Test view model and fragment.
+Implement viewModel to store image of the day. Update image of the day. Implement favorite and download options. Test view model and fragment.
 ### 5. Settings Screen
-Implement viewModel to get periodicity, time of change and the “Notify before apply” option. Update service and change is applied. Test view model and fragment.
+Implement viewModel to get periodicity, time of change and the “Notify before apply” option. Update service and change is applied. Test view model and fragment. Trigger service using On/Off button.
 ### 6. Notification to Update Image
 Implement Notification to launch when service attempts to change image. Test notification, mock service.
 ### 7. Favorites Screen
