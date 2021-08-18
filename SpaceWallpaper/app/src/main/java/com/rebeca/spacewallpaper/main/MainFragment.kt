@@ -28,6 +28,10 @@ class MainFragment : Fragment() {
             viewModel.saveSpaceImageToFavorites()
         }
 
+        binding.downloadButton.setOnClickListener {
+            viewModel.downloadSpaceImage()
+        }
+
         binding.settingsButton.setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToSettingsFragment())
         }

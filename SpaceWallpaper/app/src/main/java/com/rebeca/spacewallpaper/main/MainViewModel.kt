@@ -9,6 +9,10 @@ import com.rebeca.spacewallpaper.data.local.RequestResult
 import com.rebeca.spacewallpaper.data.local.favorites.FavoriteDTO
 import com.rebeca.spacewallpaper.data.local.pictureofday.PictureOfDayDTO
 import kotlinx.coroutines.launch
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
+import android.os.Environment
 
 class MainViewModel(application: Application,
                     private val repository: FavoritesRepository,
@@ -67,5 +71,31 @@ class MainViewModel(application: Application,
                 Log.d(TAG, "favorite title ${saved.title}, id ${saved.id}")
             }
         }
+    }
+
+    fun downloadSpaceImage() {
+        // validate
+        if (statusPictureOfDay.value != NASAApiStatus.DONE) {
+            return
+        }
+        if (pictureOfDay.value == null) {
+            return
+        }
+
+        val context = getApplication<Application>().applicationContext
+        val downloadManager =
+            context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        pictureOfDay.value?.let {
+            val uri: Uri =
+                Uri.parse(it.hdurl)
+            val request = DownloadManager.Request(uri)
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES, it.title)
+            val reference: Long = downloadManager.enqueue(request)
+        }
+
+        //todo toast when it is done
+        // test different days
+
     }
 }
