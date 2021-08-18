@@ -23,6 +23,6 @@ PictureOfDayDTO (
     @ColumnInfo(name = "url") var url: String,
     @ColumnInfo(name = "hdurl") var hdurl: String,
     @ColumnInfo(name = "explanation") var explanation: String,
-    @ColumnInfo(name = "filepath") var filepath: String,
+    @ColumnInfo(name = "filepath") var filepath: String = "",
     @PrimaryKey @ColumnInfo(name = "entry_id") val id: String = UUID.randomUUID().toString()
 )

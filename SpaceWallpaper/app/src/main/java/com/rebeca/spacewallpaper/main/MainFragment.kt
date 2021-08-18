@@ -5,22 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.rebeca.spacewallpaper.databinding.FragmentMainBinding
+import org.koin.android.ext.android.inject
 
 class MainFragment : Fragment() {
     companion object {
         private const val TAG = "MainFragment"
     }
     private lateinit var binding: FragmentMainBinding
-    private val viewModel: MainViewModel by lazy {
-        val activity = requireNotNull(this.activity) {
-            "You can only access the viewModel after onViewCreated()"
-        }
-        ViewModelProvider(this, MainViewModel.Factory(activity.application)).get(MainViewModel::class.java)
-
-    }
+    private val viewModel: MainViewModel by inject()
+    //todo add info icon in the main screen to display data.
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +23,10 @@ class MainFragment : Fragment() {
     ): View {
         binding = FragmentMainBinding.inflate(inflater)
         binding.lifecycleOwner = this
+
+        binding.saveButton.setOnClickListener {
+            viewModel.saveSpaceImageToFavorites()
+        }
 
         binding.settingsButton.setOnClickListener {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToSettingsFragment())

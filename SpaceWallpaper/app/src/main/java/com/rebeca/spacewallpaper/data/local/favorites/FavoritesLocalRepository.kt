@@ -1,8 +1,10 @@
 package com.rebeca.spacewallpaper.data.local.favorites
 
+import android.util.Log
 import com.rebeca.spacewallpaper.data.FavoritesRepository
 import com.rebeca.spacewallpaper.data.local.SpaceImageDAO
 import com.rebeca.spacewallpaper.data.local.RequestResult
+import com.rebeca.spacewallpaper.data.local.pictureofday.PictureOfDayLocalRepository
 import com.rebeca.spacewallpaper.wrapEspressoIdlingResource
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -39,6 +41,20 @@ class FavoritesLocalRepository(
      */
     override suspend fun saveFavorite(favorite: FavoriteDTO) = withContext(ioDispatcher){
         wrapEspressoIdlingResource {
+            // get new data
+            val currentFavorites = spaceImageDAO.getFavorites()
+            for (saved in currentFavorites) {
+                // validate if it is new data
+                if (favorite.mediaType == saved.mediaType
+                    && favorite.title == saved.title
+                    && favorite.url == saved.url
+                    && favorite.hdurl == saved.hdurl
+                    && favorite.explanation == saved.explanation) {
+                    Log.d(PictureOfDayLocalRepository.TAG, "Favorite is already in base! Don't save.")
+                    return@withContext
+                }
+            }
+
             spaceImageDAO.saveFavorite(favorite)
         }
     }

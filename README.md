@@ -16,9 +16,9 @@ The SpaceWallpaper app will change your wallpaper to a space image directly from
 5. User can save an image by clicking the Favorite button.
 6. The Favorite button has an animation. 
 7. Plus: Animate Favorites list icon in sync with Favorite button.
-8. All saved images are listed in the Favorites screen. 
-9. Saved images are stored locally up to a certain amount.
-10. Favorites screen has the image of the day fixed at the top.
+8. All saved images are listed in the Favorites screen.
+9. Plus: Saved images are stored locally up to a certain amount.
+10. Favorites screen displays image of the day when no item is clicked. It receives this data using a bundle.
 11. User can scroll the list of saved images.
 12. User can click an image in the list to display the image in the top of the screen.
 13. List item displays name of the image and day of creation.
@@ -27,7 +27,6 @@ The SpaceWallpaper app will change your wallpaper to a space image directly from
 16. User can download image of the day.
 17. The Download button has an animation. 
 18. Plus: Notify when download is done.
-19. Favorites screen displays image of the day when no item is clicked. It receives this data using a bundle.
 
 ## Timeline
 ### 1. Design all screens

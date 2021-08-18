@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers
-import org.hamcrest.CoreMatchers.not
+import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert
 import org.junit.After
 import org.junit.Before
@@ -48,7 +48,7 @@ class PictureOfDayLocalRepositoryTest {
     }
 
     @Test
-    fun refreshPicture_getNewPicture() = runBlocking {
+    fun refreshPicture_getSamePicture() = runBlocking {
         // given
         val picture = PictureOfDayDTO(
             "Type1",
@@ -66,7 +66,7 @@ class PictureOfDayLocalRepositoryTest {
         // then
         val result = pictureOfDayLocalRepository.getPictureOfDay()
         result as RequestResult.Success
-        assertThat(result.data.id, not(picture.id))
+        assertThat(result.data.id, `is`(picture.id))
     }
 
     @Test

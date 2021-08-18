@@ -1,5 +1,6 @@
 package com.rebeca.spacewallpaper.data.local.pictureofday
 
+import android.util.Log
 import com.rebeca.spacewallpaper.data.PictureOfDayRepository
 import com.rebeca.spacewallpaper.data.local.RequestResult
 import com.rebeca.spacewallpaper.data.local.SpaceImageDAO
@@ -14,20 +15,34 @@ class PictureOfDayLocalRepository(
     private val spaceImageDAO: SpaceImageDAO,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ): PictureOfDayRepository {
-    //todo add info icon in the main screen to display data.
-    override suspend fun refreshPictureOfDay() = withContext(ioDispatcher){
-        // clear data
-        spaceImageDAO.deletePictureOfDay()
+    companion object {
+        const val TAG = "PictureOfDayRepository"
+    }
 
+    override suspend fun refreshPictureOfDay() = withContext(ioDispatcher){
         // get new data
         val pictureOfDayResult = NASAApi.retrofitService.getImageOfDay()
+        val currentPictureOfDayRepo = spaceImageDAO.getPictureOfDay()
+
+        // validate if it is new data
+        if (pictureOfDayResult.mediaType == currentPictureOfDayRepo?.mediaType
+            && pictureOfDayResult.title == currentPictureOfDayRepo.title
+            && pictureOfDayResult.url == currentPictureOfDayRepo.url
+            && pictureOfDayResult.hdurl == currentPictureOfDayRepo.hdurl
+            && pictureOfDayResult.explanation == currentPictureOfDayRepo.explanation
+        ) {
+            Log.d(TAG, "Picture of Day is up to date!")
+            return@withContext
+        }
+
+        // add new data
         val pictureOfDayDTO = PictureOfDayDTO(
             pictureOfDayResult.mediaType,
             pictureOfDayResult.title,
             pictureOfDayResult.url,
             pictureOfDayResult.hdurl,
-            pictureOfDayResult.explanation,
-            "")
+            pictureOfDayResult.explanation)
+
         spaceImageDAO.savePictureOfDay(pictureOfDayDTO)
     }
 
@@ -61,6 +76,7 @@ class PictureOfDayLocalRepository(
      */
     override suspend fun savePictureOfDay(pictureOfDayDTO: PictureOfDayDTO) = withContext(ioDispatcher){
         wrapEspressoIdlingResource {
+            // clear data
             spaceImageDAO.deletePictureOfDay()
             spaceImageDAO.savePictureOfDay(pictureOfDayDTO)
         }

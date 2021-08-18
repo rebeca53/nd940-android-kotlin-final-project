@@ -76,6 +76,9 @@ dependencies {
     //Background worker
     implementation 'androidx.work:work-runtime-ktx:2.5.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    // Dependy injection
+    implementation 'com.google.dagger:dagger:2.28.3'
+    kapt 'com.google.dagger:dagger-compiler:2.28.3'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
