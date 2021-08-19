@@ -7,6 +7,7 @@
     <string name="favorite_button">Save Button</string>
     <string name="settings_button">Settings Button</string>
     <string name="favorites_list_button">Favorites List Button</string>
+    <string name="download_completed">Space image saved to Pictures folder.</string>
 
     <!-- Preference Titles -->
     <string name="scheduling_header">Scheduling</string>

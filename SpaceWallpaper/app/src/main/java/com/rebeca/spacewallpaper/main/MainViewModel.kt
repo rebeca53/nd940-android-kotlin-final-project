@@ -10,9 +10,14 @@ import com.rebeca.spacewallpaper.data.local.favorites.FavoriteDTO
 import com.rebeca.spacewallpaper.data.local.pictureofday.PictureOfDayDTO
 import kotlinx.coroutines.launch
 import android.app.DownloadManager
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.Environment
+import android.widget.Toast
+import com.rebeca.spacewallpaper.R
 
 class MainViewModel(application: Application,
                     private val repository: FavoritesRepository,
@@ -26,7 +31,31 @@ class MainViewModel(application: Application,
 
     val statusPictureOfDay = MutableLiveData<NASAApiStatus>()
     val pictureOfDay = MutableLiveData<PictureOfDayDTO>()
+    private var downloadManager: DownloadManager
+    private var downloadId: Long = -1
+    private val downloadReceiver = object: BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            when {
+                intent == null -> Log.e(TAG, "Intent is null")
+                intent.action == DownloadManager.ACTION_DOWNLOAD_COMPLETE -> {
+                    val id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
+                    if (id == downloadId) {
+                        Toast.makeText(context, R.string.download_completed, Toast.LENGTH_LONG).show()
+                    }
+                }
+                else -> Log.e(TAG, "Unknown broadcast")
+            }
+        }
+    }
+
+
     init {
+        val context = getApplication<Application>().applicationContext
+        downloadManager =
+            context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val intentFilter = IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
+        intentFilter.addAction(DownloadManager.ACTION_NOTIFICATION_CLICKED)
+        context.registerReceiver(downloadReceiver, intentFilter)
         getPictureOfDay()
     }
 
@@ -82,20 +111,13 @@ class MainViewModel(application: Application,
             return
         }
 
-        val context = getApplication<Application>().applicationContext
-        val downloadManager =
-            context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         pictureOfDay.value?.let {
             val uri: Uri =
                 Uri.parse(it.hdurl)
             val request = DownloadManager.Request(uri)
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
             request.setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES, it.title)
-            val reference: Long = downloadManager.enqueue(request)
+            downloadId = downloadManager.enqueue(request)
         }
-
-        //todo toast when it is done
-        // test different days
-
     }
 }
