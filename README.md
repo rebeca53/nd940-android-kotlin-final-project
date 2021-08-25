@@ -40,6 +40,7 @@ Implement background Worker. Be able to receive changes in its settings. Store r
 Delivered in August 17. TAG: v0.3.0
 ### 4. Main Screen
 Implement viewModel to store image of the day. Update image of the day. Implement favorite and download options. Test view model and fragment.
+Delivered in August 25. TAG:v0.4.0
 ### 5. Settings Screen
 Implement viewModel to get periodicity, time of change and the “Notify before apply” option. Update service and change is applied. Test view model and fragment. Trigger service using On/Off button.
 ### 6. Notification to Update Image
@@ -49,4 +50,4 @@ Implement RecyclerView. Connect RecyclerView to Database. Get data from database
 ### 8. Animation
 Animate favorite and download option in Main screen. Animate image on transition from Saved screen to Detail screen. 
 ### 9. Optional
-Plus: Notify when download is done. Add Info button in Main Screen. Animate Favorite button in MainScreen in sync with the list icon. Test activity. When item is clicked in the list, open a drawer with explanation. Test service, mock Repository.
+Plus: Notify when download is done. Add Info button in Main Screen. Animate Favorite button in MainScreen in sync with the list icon. Test activity. When item is clicked in the list, open a drawer with explanation. Test service, mock Repository. Test Main view model and fragment.
