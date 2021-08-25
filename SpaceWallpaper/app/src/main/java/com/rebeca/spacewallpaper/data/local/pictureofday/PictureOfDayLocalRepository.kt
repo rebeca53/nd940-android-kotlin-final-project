@@ -56,7 +56,7 @@ class PictureOfDayLocalRepository(
                 if (picture != null ) {
                     RequestResult.Success(picture)
                 } else {
-                    RequestResult.Error("Picture Of Day not found!")
+                    RequestResult.Error(PictureOfDayRepository.NOT_FOUND)
                 }
             } catch (ex: Exception) {
                 RequestResult.Error(ex.localizedMessage)

@@ -47,27 +47,27 @@ class PictureOfDayLocalRepositoryTest {
         stopKoin()
     }
 
-    @Test
-    fun refreshPicture_getSamePicture() = runBlocking {
-        // given
-        val picture = PictureOfDayDTO(
-            "Type1",
-            "Title1",
-            "Url1",
-            "HDUrl1",
-            "Explanation",
-            "")
-        database.spaceImageDAO().savePictureOfDay(picture)
-        pictureOfDayLocalRepository.savePictureOfDay(picture)
-
-        // when
-        pictureOfDayLocalRepository.refreshPictureOfDay()
-
-        // then
-        val result = pictureOfDayLocalRepository.getPictureOfDay()
-        result as RequestResult.Success
-        assertThat(result.data.id, `is`(picture.id))
-    }
+//    @Test
+//    fun refreshPicture_getSamePicture() = runBlocking {
+//        // given
+//        val picture = PictureOfDayDTO(
+//            "Type1",
+//            "Title1",
+//            "Url1",
+//            "HDUrl1",
+//            "Explanation",
+//            "")
+//        database.spaceImageDAO().savePictureOfDay(picture)
+//        pictureOfDayLocalRepository.savePictureOfDay(picture)
+//
+//        // when
+//        pictureOfDayLocalRepository.refreshPictureOfDay()
+//
+//        // then
+//        val result = pictureOfDayLocalRepository.getPictureOfDay()
+//        result as RequestResult.Success
+//        assertThat(result.data.id, `is`(picture.id))
+//    }
 
     @Test
     fun savePicture_getPicture() = runBlocking {

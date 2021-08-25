@@ -50,7 +50,7 @@ class FavoritesLocalRepository(
                     && favorite.url == saved.url
                     && favorite.hdurl == saved.hdurl
                     && favorite.explanation == saved.explanation) {
-                    Log.d(PictureOfDayLocalRepository.TAG, "Favorite is already in base! Don't save.")
+                    Log.d(PictureOfDayLocalRepository.TAG, FavoritesRepository.ALREADY_IN_DATABASE)
                     return@withContext
                 }
             }
@@ -82,7 +82,7 @@ class FavoritesLocalRepository(
                 if (reminder != null) {
                     return@withContext RequestResult.Success(reminder)
                 } else {
-                    return@withContext RequestResult.Error("Favorite space image not found!")
+                    return@withContext RequestResult.Error(FavoritesRepository.NOT_FOUND)
                 }
             } catch (e: Exception) {
                 return@withContext RequestResult.Error(e.localizedMessage)

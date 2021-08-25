@@ -71,6 +71,8 @@ class MainViewModel(application: Application,
             } catch (e: Exception) {
                 statusPictureOfDay.value = NASAApiStatus.ERROR
                 Log.e(TAG, "getPictureOfDay Failure: ${e.message}")
+                val context = getApplication<Application>().applicationContext
+                Toast.makeText(context, R.string.media_type_failed, Toast.LENGTH_LONG).show()
             }
         }
     }
