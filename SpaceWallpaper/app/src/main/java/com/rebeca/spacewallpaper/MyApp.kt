@@ -32,7 +32,8 @@ class MyApp : Application() {
                     favoritesRepository,
                     pictureOfDayRepository
                 )
-
+            }
+            single {
                 SettingsViewModel(
                     get(),
                     preferencesRepository
