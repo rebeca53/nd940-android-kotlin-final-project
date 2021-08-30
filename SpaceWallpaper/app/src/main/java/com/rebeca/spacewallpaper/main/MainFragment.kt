@@ -44,13 +44,4 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        //todo use settings to launch service. properly get preferences.
-//        val applicationContext = activity?.applicationContext as Context
-//        val workManager = WorkManager.getInstance(applicationContext)
-//        UpdateWallpaperWorkerFactory.setupWork(true, workManager, 1, 15, 30)
-    }
 }

@@ -12,13 +12,11 @@
             app:entries="@array/frequency_entries"
             app:entryValues="@array/frequency_values"
             app:title="@string/frequency_title"
-            app:dependency="enable"
             app:useSimpleSummaryProvider="true" />
 
         <Preference
             app:key="time"
             app:title="@string/time_title"
-            app:dependency="enable"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
@@ -29,8 +27,7 @@
             app:key="notify"
             app:summaryOff="@string/notifications_summary_off"
             app:summaryOn="@string/notifications_summary_on"
-            app:title="@string/notifications_title"
-            app:dependency="enable" />
+            app:title="@string/notifications_title" />
 
     </PreferenceCategory>
 

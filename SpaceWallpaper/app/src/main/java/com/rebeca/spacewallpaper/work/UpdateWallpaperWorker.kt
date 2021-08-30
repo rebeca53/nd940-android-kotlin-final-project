@@ -133,12 +133,30 @@ class UpdateWallpaperWorker(appContext: Context, params: WorkerParameters):
     private fun changeWallpaper(uri: Uri) {
         CoroutineScope(Dispatchers.IO).launch {
             runCatching{
-                val result: Bitmap = Picasso.with(applicationContext)
+                var result: Bitmap = Picasso.with(applicationContext)
                     .load(uri)
                     .get()
+                result = cropWallpaper(result)
                 wallpaperManager.setBitmap(result)
             }
         }
+    }
+
+    private fun cropWallpaper(bitmap: Bitmap): Bitmap {
+        val displayMetrics = applicationContext.resources.displayMetrics
+        val screenHeight = displayMetrics.heightPixels
+        val screenWidth = displayMetrics.widthPixels
+
+        if (bitmap.height <= screenHeight && bitmap.width <= screenWidth) {
+            return bitmap
+        }
+
+        val startX: Int = (bitmap.width - screenWidth) / 2
+        val startY: Int = (bitmap.height - screenHeight) / 2
+
+        return Bitmap.createBitmap(bitmap, startX, startY,
+            screenWidth,
+            screenHeight)
     }
 
     private fun notifyConfirmChangeWallpaper() {
@@ -171,6 +189,5 @@ class UpdateWallpaperWorker(appContext: Context, params: WorkerParameters):
             // or other notification behaviors after this
             notificationManager.createNotificationChannel(mChannel)
         }
-
     }
 }
