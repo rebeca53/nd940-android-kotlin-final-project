@@ -2,8 +2,10 @@ package com.rebeca.spacewallpaper.work
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.WallpaperManager
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import com.rebeca.spacewallpaper.R
 import com.rebeca.spacewallpaper.data.local.LocalDB
@@ -110,7 +112,7 @@ class UpdateWallpaperWorker(appContext: Context, params: WorkerParameters):
             // todo update filepath in database
 
             if (confirmBeforeApply) {
-                notifyConfirmChangeWallpaper()
+                notifyConfirmChangeWallpaper(uri)
             } else {
                 changeWallpaper(uri)
                 Log.d(WORK_NAME, "Wallpaper automatically changed with success")
@@ -159,19 +161,37 @@ class UpdateWallpaperWorker(appContext: Context, params: WorkerParameters):
             screenHeight)
     }
 
-    private fun notifyConfirmChangeWallpaper() {
+    private fun notifyConfirmChangeWallpaper(uri: Uri) {
+        //todo set notification icon
+        //todo set app icon
+        //todo set x cancel icon
+        //todo set tick confirm icon
         val id = applicationContext.getString(R.string.notification_channel_id)
         val title = applicationContext.getString(R.string.notification_title)
-        // todo implement cancel and confirm action
-        val cancel = applicationContext.getString(R.string.notification_cancel)
-        val confirm = applicationContext.getString(R.string.notification_confirm)
 
+        val cancelTitle = applicationContext.getString(R.string.notification_cancel)
+        val cancelIntent = Intent(applicationContext, UpdateWallpaperReceiver::class.java).apply {
+            action = UpdateWallpaperReceiver.ACTION_CANCEL
+        }
+        val cancelPendingIntent: PendingIntent =
+            PendingIntent.getBroadcast(applicationContext, 0, cancelIntent, 0)
+
+        val confirmTitle = applicationContext.getString(R.string.notification_confirm)
+        val confirmIntent = Intent(applicationContext, UpdateWallpaperReceiver::class.java).apply {
+            action = UpdateWallpaperReceiver.ACTION_UPDATE_WALLPAPER
+            putExtra(UpdateWallpaperReceiver.EXTRA_URI, uri)
+        }
+        val confirmPendingIntent: PendingIntent =
+            PendingIntent.getBroadcast(applicationContext, 0, confirmIntent, 0)
         createChannel()
 
         val notification = NotificationCompat.Builder(applicationContext, id)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle(title)
             .setTicker(title)
+            .addAction(0, cancelTitle, cancelPendingIntent)
+            .addAction(0, confirmTitle, confirmPendingIntent)
+            .setAutoCancel(true)
             .build()
 
         notificationManager.notify(FOREGROUND_NOTIFICATION_ID, notification)
