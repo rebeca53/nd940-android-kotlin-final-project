@@ -12,16 +12,16 @@ import com.rebeca.spacewallpaper.data.local.LocalDB
 import com.rebeca.spacewallpaper.data.local.RequestResult
 import com.rebeca.spacewallpaper.data.local.pictureofday.PictureOfDayLocalRepository
 import retrofit2.HttpException
-import android.graphics.Bitmap
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.work.*
-import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.IOException
+import java.io.InputStream
+import java.net.URL
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -135,30 +135,16 @@ class UpdateWallpaperWorker(appContext: Context, params: WorkerParameters):
     private fun changeWallpaper(uri: Uri) {
         CoroutineScope(Dispatchers.IO).launch {
             runCatching{
-                var result: Bitmap = Picasso.with(applicationContext)
-                    .load(uri)
-                    .get()
-                result = cropWallpaper(result)
-                wallpaperManager.setBitmap(result)
+                try {
+                    val input: InputStream = URL(uri.toString()).openStream()
+                    Log.v(UpdateWallpaperReceiver.TAG, "$uri")
+                    wallpaperManager.setStream(input)
+                    input.close()
+                } catch (e: java.lang.Exception) {
+                    e.printStackTrace()
+                }
             }
         }
-    }
-
-    private fun cropWallpaper(bitmap: Bitmap): Bitmap {
-        val displayMetrics = applicationContext.resources.displayMetrics
-        val screenHeight = displayMetrics.heightPixels
-        val screenWidth = displayMetrics.widthPixels
-
-        if (bitmap.height <= screenHeight && bitmap.width <= screenWidth) {
-            return bitmap
-        }
-
-        val startX: Int = (bitmap.width - screenWidth) / 2
-        val startY: Int = (bitmap.height - screenHeight) / 2
-
-        return Bitmap.createBitmap(bitmap, startX, startY,
-            screenWidth,
-            screenHeight)
     }
 
     private fun notifyConfirmChangeWallpaper(uri: Uri) {

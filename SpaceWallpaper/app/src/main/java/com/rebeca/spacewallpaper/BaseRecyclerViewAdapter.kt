@@ -1,8 +1,11 @@
 package com.rebeca.spacewallpaper
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.databinding.DataBindingUtil
@@ -44,11 +47,22 @@ abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Un
         val myButton = holder.itemView.findViewById<AppCompatImageButton>(R.id.downloadButton) // This is your Button, you declared in your xml file.
         myButton.setOnClickListener {
             downloadCallback?.invoke(item)
+            scaleDownloadButton(myButton)
         }
     }
 
     fun setDownloadCallback(callback: ((item: T) -> Unit)? = null) {
         downloadCallback = callback
+    }
+
+    private fun scaleDownloadButton(button: ImageButton) {
+        val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 2f)
+        val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 2f)
+        val animator = ObjectAnimator.ofPropertyValuesHolder(
+            button, scaleX, scaleY)
+        animator.repeatCount = 1
+        animator.repeatMode = ObjectAnimator.REVERSE
+        animator.start()
     }
 
     fun getItem(position: Int) = _items[position]

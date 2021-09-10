@@ -47,4 +47,6 @@ class FavoritesFragment : Fragment() {
 //        setup the recycler view using the extension function
         binding.spaceImageRecycler.setup(adapter)
     }
+
+
 }
