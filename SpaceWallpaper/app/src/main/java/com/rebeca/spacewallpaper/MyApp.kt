@@ -5,6 +5,7 @@ import com.rebeca.spacewallpaper.data.FavoritesRepository
 import com.rebeca.spacewallpaper.data.PictureOfDayRepository
 import com.rebeca.spacewallpaper.data.PreferencesRepository
 import com.rebeca.spacewallpaper.data.local.LocalDB
+import com.rebeca.spacewallpaper.favorites.FavoritesViewModel
 import com.rebeca.spacewallpaper.main.MainViewModel
 import com.rebeca.spacewallpaper.settings.SettingsViewModel
 import org.koin.android.ext.koin.androidContext
@@ -31,6 +32,13 @@ class MyApp : Application() {
                     get(),
                     favoritesRepository,
                     pictureOfDayRepository
+                )
+            }
+
+            viewModel {
+                FavoritesViewModel(
+                    get(),
+                    favoritesRepository
                 )
             }
             single {

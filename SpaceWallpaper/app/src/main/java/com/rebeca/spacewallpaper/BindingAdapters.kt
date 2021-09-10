@@ -4,6 +4,8 @@ import android.view.View
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.RecyclerView
 import com.rebeca.spacewallpaper.main.MainViewModel
 import com.squareup.picasso.Picasso
 
@@ -40,6 +42,16 @@ fun bindImageOfDayStatus(statusImageView: ImageView, status: MainViewModel.NASAA
         }
         MainViewModel.NASAApiStatus.DONE -> {
             statusImageView.visibility = View.GONE
+        }
+    }
+}
+
+@BindingAdapter("spaceImagesList")
+fun <T> setRecyclerViewData(recyclerView: RecyclerView, items: LiveData<List<T>>?) {
+    items?.value?.let { itemList ->
+        (recyclerView.adapter as? BaseRecyclerViewAdapter<T>)?.apply {
+            clear()
+            addData(itemList)
         }
     }
 }

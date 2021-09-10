@@ -20,7 +20,7 @@ import android.widget.Toast
 import com.rebeca.spacewallpaper.R
 
 class MainViewModel(application: Application,
-                    private val repository: FavoritesRepository,
+                    private val favoritesRepository: FavoritesRepository,
                     private val pictureOfDayRepository: PictureOfDayRepository):
     AndroidViewModel(application) {
     companion object {
@@ -47,7 +47,6 @@ class MainViewModel(application: Application,
             }
         }
     }
-
 
     init {
         val context = getApplication<Application>().applicationContext
@@ -88,7 +87,7 @@ class MainViewModel(application: Application,
         val favorite = pictureOfDay.value as PictureOfDayDTO
 
         viewModelScope.launch {
-            repository.saveFavorite(
+            favoritesRepository.saveFavorite(
                 FavoriteDTO(
                     favorite.mediaType,
                     favorite.title,
@@ -97,7 +96,7 @@ class MainViewModel(application: Application,
                     favorite.explanation)
             )
             Log.d(TAG, "favorite saved! ${favorite.title}")
-            val favoritesList = repository.getFavorites() as RequestResult.Success
+            val favoritesList = favoritesRepository.getFavorites() as RequestResult.Success
             for (saved in favoritesList.data) {
                 Log.d(TAG, "favorite title ${saved.title}, id ${saved.id}")
             }
