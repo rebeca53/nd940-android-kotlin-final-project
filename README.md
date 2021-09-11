@@ -44,15 +44,15 @@ Delivered in August 25. TAG:v0.4.0
 ### 5. Settings Screen
 Implement viewModel to get periodicity, time of change and the “Notify before apply” option. Update service and change is applied. Trigger service using On/Off button. Delivered in August 29. TAG:v0.5.0
 ### 6. Notification to Update Image
-Implement Notification to launch when service attempts to change image. Test notification, mock service.
+Implement Notification to launch when service attempts to change image. Delivered in September 11. TAG: v0.6.0.
 ### 7. Favorites Screen
-Implement RecyclerView. Connect RecyclerView to Database. Get data from database (Repository). Implement download option. Test view model and fragment.
+Implement RecyclerView. Connect RecyclerView to Database. Get data from database (Repository). Implement download option. Delivered in September 11. TAG: v0.6.0.
 ### 8. Animation
-Animate favorite and download option in Main screen. Animate image on transition from Saved screen to Detail screen. 
+Animate favorite option in Main screen. Delivered in September 11. TAG: v0.6.0.
 ### 9. Optional
 Plus: Notify when download is done. Add Info button in Main Screen. Animate Favorite button in MainScreen in sync with the list icon. Test activity. When item is clicked in the list, open a drawer with explanation. Test service, mock Repository. Test all view model and fragment.
 
-## Known issues
+## Future enhancements
 ### Android compatibility. 
 The buttons to save image and to download image in the main screen are not working in LG K9, Android 7. The application crashes.
 Notification is not appearing in the exact scheduled time in LG K9, Android 7. It has 2 minutes of delay. Must be an issue with work manager, maybe try to replace it with a alarme service.

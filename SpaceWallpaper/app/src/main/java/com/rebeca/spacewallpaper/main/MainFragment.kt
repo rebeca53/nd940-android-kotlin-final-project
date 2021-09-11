@@ -31,7 +31,8 @@ class MainFragment : Fragment() {
 
         binding.saveButton.setOnClickListener {
             viewModel.saveSpaceImageToFavorites()
-            scaleButton(binding.saveButton)
+            binding.mainMotionLayout.progress = 0F
+            binding.mainMotionLayout.transitionToEnd()
         }
 
         binding.downloadButton.setOnClickListener {
