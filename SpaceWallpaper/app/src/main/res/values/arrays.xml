@@ -1,0 +1,14 @@
+<resources>
+    <!-- Frequency Preference -->
+    <string-array name="frequency_entries">
+        <item>Every day</item>
+        <item>Every 2 days</item>
+        <item>Every week</item>
+    </string-array>
+
+    <string-array name="frequency_values">
+        <item>every_day</item>
+        <item>every_two_days</item>
+        <item>every_week</item>
+    </string-array>
+</resources>
