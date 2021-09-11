@@ -4,9 +4,18 @@ August 2nd, 2021
 The SpaceWallpaper app will change your wallpaper to a space image directly from NASA. Once a day, it is going to retrieve from NASA Api the so-called “Image of the day”. Then, it will update the wallpaper of your Android device.
 
 ## User Interface
-- **Main screen:** TODO: Add image here.
-- **Settings screen:** TODO: Add image here.
-- **Favorites screen:** TODO: Add image here. 
+- **Main screen:**
+
+<img src="MainScreen.png" width="300">
+
+- **Settings screen:**
+
+<img src="SettingsScreen.png" width="300">
+
+- **Favorites screen:**
+
+<img src="FavoritesListScreen.png" width="300">
+
 
 ## Requirements
 1. App has the automatic mode, in which the wallpaper automatically, without asking the user. 
