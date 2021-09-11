@@ -71,6 +71,17 @@
             android:contentDescription="@string/favorite_button" />
 
         <ImageButton
+            android:id="@+id/animatedSaveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="#00555555"
+            android:contentDescription="@string/favorite_button"
+            android:src="@drawable/ic_baseline_favorite_48"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/saveButton" />
+
+        <ImageButton
             android:id="@+id/settingsButton"
             android:layout_width="204dp"
             android:layout_height="wrap_content"
