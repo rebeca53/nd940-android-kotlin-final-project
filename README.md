@@ -51,3 +51,10 @@ Implement RecyclerView. Connect RecyclerView to Database. Get data from database
 Animate favorite and download option in Main screen. Animate image on transition from Saved screen to Detail screen. 
 ### 9. Optional
 Plus: Notify when download is done. Add Info button in Main Screen. Animate Favorite button in MainScreen in sync with the list icon. Test activity. When item is clicked in the list, open a drawer with explanation. Test service, mock Repository. Test all view model and fragment.
+
+## Known issues
+### Android compatibility. 
+The buttons to save image and to download image in the main screen are not working in LG K9, Android 7. The application crashes.
+Notification is not appearing in the exact scheduled time in LG K9, Android 7. It has 2 minutes of delay. Must be an issue with work manager, maybe try to replace it with a alarme service.
+APK is using too much space in in LG K9, Android 7. Also, remember to add my name, and people involved in the About session.
+Give some feedback on download progress.
