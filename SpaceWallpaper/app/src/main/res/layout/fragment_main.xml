@@ -83,26 +83,31 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
+
         <ImageButton
             android:id="@+id/settingsButton"
-            android:layout_width="204dp"
+            android:layout_width="0dp"
+            app:layout_constraintHorizontal_weight="1"
             android:layout_height="wrap_content"
             android:background="@color/teal_700"
             android:contentDescription="@string/settings_button"
             android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/favorites_button"
             app:srcCompat="@drawable/ic_baseline_settings_48" />
 
         <ImageButton
             android:id="@+id/favorites_button"
-            android:layout_width="204dp"
+            android:layout_width="0dp"
+            app:layout_constraintHorizontal_weight="1"
             android:layout_height="wrap_content"
             android:background="@color/teal_700"
             android:contentDescription="@string/favorites_list_button"
             android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/settingsButton"
             app:srcCompat="@drawable/ic_baseline_view_list_48" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
