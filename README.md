@@ -64,6 +64,9 @@ Plus: Notify when download is done. Add Info button in Main Screen. Animate Favo
 ## Future enhancements
 ### Android compatibility. 
 The buttons to save image and to download image in the main screen are not working in LG K9, Android 7. The application crashes.
-Notification is not appearing in the exact scheduled time in LG K9, Android 7. It has 2 minutes of delay. Must be an issue with work manager, maybe try to replace it with a alarme service.
+Notification is not appearing in the exact scheduled time in LG K9, Android 7. It has 2 minutes of delay. Must be an issue with work manager, maybe try to replace it with an alarm service.
 APK is using too much space in in LG K9, Android 7. Also, remember to add my name, and people involved in the About session.
 Give some feedback on download progress.
+
+### Other
+Use timber library for logs.
