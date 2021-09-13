@@ -13,16 +13,18 @@
         android:id="@+id/mainMotionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/teal_700"
         app:layoutDescription="@xml/fragment_main_scene"
         tools:context=".main.MainFragment">
 
         <FrameLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/match_constraint_alias"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/settingsButton">
 
             <ImageView
                 android:id="@+id/selectedImage"
@@ -31,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 tools:srcCompat="@drawable/luna" />
 
             <ImageView
