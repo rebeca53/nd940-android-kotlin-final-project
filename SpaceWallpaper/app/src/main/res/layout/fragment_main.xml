@@ -13,16 +13,18 @@
         android:id="@+id/mainMotionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/teal_700"
         app:layoutDescription="@xml/fragment_main_scene"
         tools:context=".main.MainFragment">
 
         <FrameLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/match_constraint_alias"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/settingsButton">
 
             <ImageView
                 android:id="@+id/selectedImage"
@@ -31,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
+                android:scaleType="fitCenter"
                 tools:srcCompat="@drawable/luna" />
 
             <ImageView
@@ -50,9 +52,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="#00555555"
+            android:layout_marginTop="@dimen/image_button_between_margin"
+            android:layout_marginEnd="@dimen/image_button_end_margin"
+            android:background="@color/grey_transparent"
             android:contentDescription="@string/download_button"
             android:src="@drawable/ic_baseline_cloud_download_48"
             app:layout_constraintBottom_toTopOf="@+id/frameLayout"
@@ -63,8 +65,8 @@
             android:id="@+id/animatedSaveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="#00555555"
+            android:layout_marginEnd="@dimen/image_button_end_margin"
+            android:background="@color/grey_transparent"
             android:contentDescription="@string/favorite_button"
             android:src="@drawable/ic_baseline_favorite_48"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,34 +77,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginEnd="8dp"
-            android:background="#00555555"
+            android:layout_marginEnd="@dimen/image_button_end_margin"
+            android:background="@color/grey_transparent"
             android:contentDescription="@string/favorite_button"
             android:src="@drawable/ic_baseline_favorite_48"
             app:layout_constraintBottom_toTopOf="@+id/downloadButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
+
         <ImageButton
             android:id="@+id/settingsButton"
-            android:layout_width="204dp"
+            android:layout_width="0dp"
+            app:layout_constraintHorizontal_weight="1"
             android:layout_height="wrap_content"
             android:background="@color/teal_700"
             android:contentDescription="@string/settings_button"
             android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/favorites_button"
             app:srcCompat="@drawable/ic_baseline_settings_48" />
 
         <ImageButton
             android:id="@+id/favorites_button"
-            android:layout_width="204dp"
+            android:layout_width="0dp"
+            app:layout_constraintHorizontal_weight="1"
             android:layout_height="wrap_content"
             android:background="@color/teal_700"
             android:contentDescription="@string/favorites_list_button"
             android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/settingsButton"
             app:srcCompat="@drawable/ic_baseline_view_list_48" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>

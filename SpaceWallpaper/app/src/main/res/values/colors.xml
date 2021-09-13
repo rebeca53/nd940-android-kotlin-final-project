@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <!-- palette Made of Stars from http://paperheartdesign.com/blog/color-palette-awesome-space -->
 <resources>
     <color name="purple_200">#FF9aeadd</color>
@@ -10,4 +9,5 @@
     <color name="teal_700">#FF011307</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey_transparent">#00555555</color>
 </resources>
